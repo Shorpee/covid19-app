@@ -1,15 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import L from 'leaflet';
-
-
-
-
 import Layout from 'components/Layout';
+
 import Container from 'components/Container';
 import Map from 'components/Map';
-
-
 
 const LOCATION = {
   lat: 38.9072,
@@ -17,13 +12,6 @@ const LOCATION = {
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
 const DEFAULT_ZOOM = 2;
-
-
-
-
-
-
-
 
 const IndexPage = () => {
 
@@ -34,8 +22,7 @@ const IndexPage = () => {
    */
 
   async function mapEffect({ leaflet: map} = {}){
-
-  }
+}
 
   const mapSettings = {
     center: CENTER,
