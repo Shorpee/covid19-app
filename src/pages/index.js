@@ -55,7 +55,7 @@ const IndexPage = () => {
       })
     }
 
-    const geoJsonLayers = new L.GeoJSON(geoJson. {
+    const geoJsonLayers = new L.GeoJSON(geoJson, {
       pointToLayer: (feature = {}, latlng) => {
         const { properties = {} } = feature;
         let updatedFormatted;
@@ -80,18 +80,18 @@ const IndexPage = () => {
         }
 
         const html = `
-        <span class="icon-marker">
-          <span class="icon-marker-tooltip">
-            <h2>${country}</h2>
-            <ul>
-              <li><strong>Confirmed:</strong>${cases}</li>
-              <li><strong>Deaths:</strong>${deaths}</li>
-              <li><strong>Recovered:</strong>${recovered}</li>
-              <li><strong>Last Update:</strong>${updatedFormatted}</li>
-            </ul>
+          <span class="icon-marker">
+            <span class="icon-marker-tooltip">
+              <h2>${country}</h2>
+              <ul>
+                <li><strong>Confirmed:</strong> ${cases}</li>
+                <li><strong>Deaths:</strong> ${deaths}</li>
+                <li><strong>Recovered:</strong> ${recovered}</li>
+                <li><strong>Last Update:</strong> ${updatedFormatted}</li>
+              </ul>
+            </span>
+            ${ casesString }
           </span>
-          ${ casesString }
-        </span>
         `;
 
         return L.marker( latlng, {
@@ -105,7 +105,7 @@ const IndexPage = () => {
     });
 
     geoJsonLayers.addTo(map)
-}
+  }
 
   const mapSettings = {
     center: CENTER,
