@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import L from 'leaflet';
+import axios from 'axios';
 import Layout from 'components/Layout';
 
 import Container from 'components/Container';
@@ -22,6 +23,16 @@ const IndexPage = () => {
    */
 
   async function mapEffect({ leaflet: map} = {}){
+    let response;
+
+    try {
+      response = await axios.get('https://corona.lmao.ninja/countries');
+    } catch (e) {
+      console.log(`Failed to fetch countries: ${e.message}`, e);
+      return;
+    }
+
+    const {data = [] } = response;
 }
 
   const mapSettings = {
@@ -41,11 +52,6 @@ const IndexPage = () => {
 
       <Container type="content" className="text-center home-start">
         <h2>Still Getting Started?</h2>
-        <p>Run the following in your terminal!</p>
-        <pre>
-          <code>gatsby new [directory] https://github.com/colbyfayock/gatsby-starter-leaflet</code>
-        </pre>
-        <p className="note">Note: Gatsby CLI required globally for the above command</p>
       </Container>
     </Layout>
   );
